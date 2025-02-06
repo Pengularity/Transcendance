@@ -86,7 +86,8 @@ function update() {
     //draw player2
     context.fillStyle = 'orange';
 	if (isAIActive) {
-		updateAI();
+		setInterval(refreshAIVision, 1000);
+		updateAIMovement();
 	}
 	let nextPlayer2Y = player2.y + player2.VelocityY;
 	if (!outOfBounds(nextPlayer2Y)) {
