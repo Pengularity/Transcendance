@@ -1,4 +1,4 @@
-// --- Variables globales et initialisation ---
+// AI activation with key "T"
 let isAIActive = false;
 document.addEventListener('keydown', (e) => {
     if (e.code === "KeyT") {
@@ -7,11 +7,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-let targetY = boardHeight / 2;  // Position cible du paddle
-let currentKey = null;          // Touche actuellement simulée ("ArrowUp" ou "ArrowDown")
+let targetY = boardHeight / 2;
+let currentKey = null;
 let lastSimulatedDirection = null; 
 
-// --- Optimisation des événements clavier ---
 function simulateKeyPress(key) {
     if (currentKey !== key) {
         if (currentKey !== null) simulateKeyRelease(currentKey);
@@ -31,7 +30,7 @@ function releaseAllKeys() {
     if (currentKey !== null) simulateKeyRelease(currentKey);
 }
 
-// --- Rafraîchissement de la vision de l'IA ---
+// AI vision refresh
 function refreshAIVision() {
     if (!isAIActive) return;
     if (ball.VelocityX <= 0) {
@@ -41,7 +40,7 @@ function refreshAIVision() {
     }
 }
 
-// --- Mise à jour optimisée du mouvement de l'IA ---
+// Update AI Movement
 function updateAIMovement() {
     if (!isAIActive) {
         releaseAllKeys();
@@ -63,7 +62,7 @@ function updateAIMovement() {
     }
 }
 
-// --- Optimisation de la prédiction de la balle ---
+// Ball prediction
 function predictBallPosition(ball, playerX) {
     if (ball.VelocityX === 0) return ball.y;
 
